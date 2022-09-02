@@ -1,6 +1,8 @@
 ######### GUITAR SCALES #########
 
-Download files into a folder. Keep main.exe and text files in the same folder.
+Download - main.exe, Scale_Names.txt, Scale_Steps.txt, Progressions.txt
+
+Place these files into a folder. Keep main.exe and text files in the same folder.
 
 This program works by pulling the information stored on 'Progressions.txt', 'Scale_Names.txt', and 'Scale_Steps.txt'
 
