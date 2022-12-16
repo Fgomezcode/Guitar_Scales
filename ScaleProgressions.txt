@@ -1,0 +1,19 @@
+I - IV - V
+I - vi - IV - V
+vi - IV - I - V
+I - vi - ii - V
+I - I - IV - V
+I - IV - V - V
+I - IV - I - V
+I - IV - V - IV
+I - vi - IV - V
+I - IV - V - I
+ii - I - V
+I - V - vi - IV
+i - iv - v
+i - iidim - V - i
+i - VI - III - VII
+ii - V - I
+I - VI - II - V
+III - VI - II - V
+I - II - V - IV
