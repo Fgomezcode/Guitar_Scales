@@ -1,27 +1,23 @@
 import utility as util
 
 
-# TODO:CHECK IF DATA ALREADY EXISTS
-
-
-
 def welcome() -> None:
-    header = f'GENERATE KEYS AND PROGRESSIONS'
+    header = f'GUITAR SCALE ALMANAC'
     sub_header = f'This program generates keys and chord progressions.\n' \
                  f'It was developed with GUITAR and BASS in mind, but is not limited to those instruments.\n' \
                  f'A \'fretboard\' with specified number of strings and tuning will also be created.\n' \
                  f'Please use natural and sharp (\'#\') notation when entering tuning and root note.\n'
 
     print(
-        f'{util.ConsoleColors.HEADER}{util.ConsoleColors.UNDERLINE}{util.ConsoleColors.BOLD}{header}{util.ConsoleColors.ENDC}')
-    print(f'{util.ConsoleColors.OKCYAN}{sub_header}{util.ConsoleColors.ENDC}')
+        f'{header}')
+    print(f'{sub_header}')
 
 
 def menu():
-    retune = f'{util.ConsoleColors.BOLD}{util.ConsoleColors.OKGREEN}1:{util.ConsoleColors.ENDC} CHANGE TUNING.'
-    new_note = f'{util.ConsoleColors.BOLD}{util.ConsoleColors.OKGREEN}2:{util.ConsoleColors.ENDC} CHANGE ROOT NOTE.'
-    refresh = f'{util.ConsoleColors.BOLD}{util.ConsoleColors.OKGREEN}3:{util.ConsoleColors.ENDC} APPLY CHANGES.'
-    end = f'{util.ConsoleColors.BOLD}{util.ConsoleColors.FAIL}4: QUIT.{util.ConsoleColors.ENDC}'
+    retune = f'1: CHANGE TUNING.'
+    new_note = f'2: CHANGE ROOT NOTE.'
+    refresh = f'3: APPLY CHANGES.'
+    end = f'4: QUIT.'
 
     print(f'{retune}\n{new_note}\n{refresh}\n{end}\n')
 
@@ -50,8 +46,8 @@ def menu():
 def run() -> None:
     welcome()
 
-    intro = f'{util.ConsoleColors.BOLD}{util.ConsoleColors.WARNING}LET\'S GET YOUR TUNING FIGURED OUT.{util.ConsoleColors.ENDC}\n'
-    print(f'{intro}{util.ConsoleColors.ENDC}')
+    intro = f'LET\'S GET YOUR TUNING FIGURED OUT.\n'
+    print(f'{intro}')
 
     is_running = True
     is_tuning = True
@@ -74,8 +70,8 @@ def run() -> None:
 
         # Loop Control
         # -----------------------------------------------------------------------------------
-        print(f'{util.ConsoleColors.HEADER}{util.ConsoleColors.BOLD}Current Tuning: {util.ConsoleColors.WARNING}{" ".join(tuning)}')
-        print(f'{util.ConsoleColors.HEADER}{util.ConsoleColors.BOLD}Current Root Note: {util.ConsoleColors.WARNING}{root}{util.ConsoleColors.ENDC}')
+        print(f'Current Tuning: {" ".join(tuning)}')
+        print(f'Current Root Note: {root}')
 
         is_tuning, is_root, is_refresh, is_running = menu()
         print()

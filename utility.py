@@ -24,7 +24,7 @@ def get_tuning() -> [str]:
     string_count = 6  # default
 
     while not is_valid:
-        print(f'{ConsoleColors.BOLD}HOW MANY STRINGS ARE ON YOUR INSTRUMENT?{ConsoleColors.ENDC}')
+        print(f'HOW MANY STRINGS ARE ON YOUR INSTRUMENT?')
         try:
             string_count = int(input('Enter number 1 - 12:\t'))
         except:
@@ -35,7 +35,7 @@ def get_tuning() -> [str]:
     print()
 
     prompt = 'START WITH THE LOWEST STRING:\t'
-    temp = f'{ConsoleColors.BOLD}{ConsoleColors.WARNING}{prompt}{ConsoleColors.ENDC}'
+    temp = f'{prompt}'
     print(temp)
 
     count = string_count
@@ -46,7 +46,7 @@ def get_tuning() -> [str]:
         x = x.upper()
 
         if x not in chromatic_scale or x == '' or x == ' ':
-            print(f'{ConsoleColors.FAIL}INVALID NOTATION{ConsoleColors.ENDC}')
+            print(f'INVALID NOTATION')
             continue
         else:
             count -= 1
@@ -54,11 +54,11 @@ def get_tuning() -> [str]:
 
     user_input = 'N'
     while user_input != 'Y':
-        check = f'You Entered {ConsoleColors.OKBLUE}{ConsoleColors.BOLD}{" ".join(tuning)}{ConsoleColors.ENDC} is this correct? (y/n):\t'
+        check = f'You Entered {" ".join(tuning)} is this correct? (y/n):\t'
         user_input = input(check).upper()
 
         if user_input != 'Y':
-            print(f'{ConsoleColors.OKGREEN}No worries, lets start over.\n{ConsoleColors.ENDC}')
+            print(f'No worries, lets start over.\n')
 
     print()
     return tuning
@@ -68,19 +68,19 @@ def get_root_note():
     root = ''
     user_input = ''
     while user_input != 'Y':
-        print(f'{ConsoleColors.BOLD}{ConsoleColors.WARNING}CHOOSE A ROOT NOTE.{ConsoleColors.ENDC}')
+        print(f'CHOOSE A ROOT NOTE.')
         root = str(input('Root Note:\t'))
         root = root.strip()
         root = root.upper()
 
         if root not in chromatic_scale or root == '' or root == ' ':
-            print(f'{ConsoleColors.FAIL}INVALID NOTATION{ConsoleColors.ENDC}\n')
+            print(f'INVALID NOTATION\n')
             continue
-        check = f'You Entered {ConsoleColors.OKBLUE}{ConsoleColors.BOLD}{root}{ConsoleColors.ENDC} is this correct? (y/n):\t'
+        check = f'You Entered {root} is this correct? (y/n):\t'
         user_input = input(check).upper()
 
         if user_input != 'Y':
-            print(f'{ConsoleColors.OKGREEN}OK, lets pick a new root note.\n\n{ConsoleColors.ENDC}')
+            print(f'OK, lets pick a new root note.\n\n')
 
     print()
     return root
@@ -102,7 +102,7 @@ def display(root_note: str, tuning: str) -> None:  # F
 
         # display root note name of scale and notes in key
         print(
-            f'{ConsoleColors.BOLD}{i + 1}{ConsoleColors.FAIL} {root_note} {header["names"][i]} {ConsoleColors.OKGREEN}{key}{ConsoleColors.ENDC}',
+            f'{i + 1} {root_note} {header["names"][i]} {key}',
             end='')
 
         # PRINT FRETBOARD
@@ -110,18 +110,18 @@ def display(root_note: str, tuning: str) -> None:  # F
         notes = key.split()
         board, frets = display_fretboard(tuning, notes, root_note)
 
-        print(f'{ConsoleColors.WARNING}{ConsoleColors.BOLD}\nFRETBOARD{ConsoleColors.ENDC}')
+        print(f'\nFRETBOARD')
 
-        print(f'{ConsoleColors.BOLD}{ConsoleColors.UNDERLINE}{frets}{ConsoleColors.ENDC}')
+        print(f'{frets}')
 
         for string in board:
-            print(f'{ConsoleColors.BOLD}{string}{ConsoleColors.ENDC}')
+            print(f'{string}')
 
-        print(f'{ConsoleColors.BOLD}{ConsoleColors.UNDERLINE}{frets}{ConsoleColors.ENDC}')
+        print(f'{frets}')
 
         # PRINT PROGRESSIONS
         # ==============================================
-        print(f'{ConsoleColors.WARNING}{ConsoleColors.BOLD}\nPROGRESSIONS{ConsoleColors.ENDC}')
+        print(f'\nPROGRESSIONS')
 
         for j in header['progressions']:
             t = [int(x) for x in j[1]]  # make list into ints
@@ -172,17 +172,17 @@ def make_fretboard(_notes: [str], string_notes: [str], tuning: [str], root_note:
 
     # name string w/ notes
     for j, string in enumerate(f):
-        temp += f'{ConsoleColors.HEADER}{tuning[j] + "|":5}{ConsoleColors.ENDC}'
+        temp += f'{tuning[j] + "|":5}'
 
         for i in range(len(string)):
             if string[i] not in _notes:  # if specific note not in the key add blank space
                 temp += f'{spacer:5}'
 
             elif string[i] == root_note:
-                temp += f'{ConsoleColors.WARNING}{ConsoleColors.BOLD}{string[i]:5}{ConsoleColors.ENDC}'
+                temp += f'{string[i]:5}'
 
             else:  # include the note - it exists in the key
-                temp += f'{ConsoleColors.OKBLUE}{ConsoleColors.BOLD}{string[i]:5}{ConsoleColors.ENDC}'
+                temp += f'{string[i]:5}'
 
         s_string.append(temp)
         temp = ''
